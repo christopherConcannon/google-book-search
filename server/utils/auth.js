@@ -34,7 +34,7 @@ module.exports = {
       console.log('Invalid token');
     }
 
-    // return updated request object
+    // return updated request object with .user added
     return req;
   },
 

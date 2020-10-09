@@ -42,7 +42,6 @@ const typeDefs = gql`
     description: String
     title: String
     image: String
-    link: String
   }
 `;
 
@@ -54,3 +53,5 @@ module.exports = typeDefs;
 
 
 // saveBook(bookId: String, authors: [String], description: String, title: String, image: String, link: String): User
+
+// link: String

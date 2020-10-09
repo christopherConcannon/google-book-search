@@ -4,8 +4,10 @@ const db = require('./config/connection');
 
 // import ApolloServer
 const { ApolloServer } = require('apollo-server-express');
-
 const { authMiddleware } = require('./utils/auth');
+
+// import typeDefs and resolvers
+const { typeDefs, resolvers } = require('./schemas')
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -35,5 +37,5 @@ app.get('*', (req, res) => {
 })
 
 db.once('open', () => {
-  app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
+  app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}${server.graphqlPath}`));
 });

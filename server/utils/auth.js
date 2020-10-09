@@ -1,7 +1,10 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 // set token secret and expiration date
-const secret = process.env.SECRET;
+// process.env variable not currently working.  console.logs correctly, but getting an error in graphql playground--SEE ERROR BELOW
+// const secret = process.env.JWT_SECRET;
+const secret = 'my$3cr3t$hhhhh';
+console.log(secret);
 const expiration = '2h';
 
 module.exports = {
@@ -39,3 +42,29 @@ module.exports = {
   },
 
 };
+
+
+
+
+
+// "errors": [
+//   {
+//     "message": "secretOrPrivateKey must have a value",
+//     "locations": [
+//       {
+//         "line": 2,
+//         "column": 3
+//       }
+//     ],
+//     "path": [
+//       "addUser"
+//     ],
+//     "extensions": {
+//       "code": "INTERNAL_SERVER_ERROR",
+//       "exception": {
+//         "stacktrace": [
+//           "Error: secretOrPrivateKey must have a value",
+//           "    at Object.module.exports [as sign] (C:\\Users\\cmcon\\Desktop\\ut coding program\\MODULES\\Module-21-MERN\\challenge\\google-books-search\\server\\node_modules\\jsonwebtoken\\sign.js:107:20)",
+//           "    at signToken (C:\\Users\\cmcon\\Desktop\\ut coding program\\MODULES\\Module-21-MERN\\challenge\\google-books-search\\server\\utils\\auth.js:13:16)",
+//           "    at addUser (C:\\Users\\cmcon\\Desktop\\ut coding program\\MODULES\\Module-21-MERN\\challenge\\google-books-search\\server\\schemas\\resolvers.js:50:21)",
+//           "    at processTicksAndRejections (internal/process/task_queues.js:97:5)"

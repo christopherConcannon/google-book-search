@@ -11,8 +11,6 @@ const resolvers = {
         const userData = await User.findOne({_id: context.user._id})
           .select('-__v -password')
           // not sure what to populate...check front end.  need savedBooks array from User to map over for component
-          .populate('savedBooks')
-
         return userData;
       }
 

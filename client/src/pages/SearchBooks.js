@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 
 import { useMutation } from '@apollo/react-hooks';
-import { SAVE_BOOK } from '../utils/mutations'
+import { SAVE_BOOK } from '../utils/mutations';
+import { GET_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
 // import { saveBook, searchGoogleBooks } from '../utils/API';
@@ -25,7 +26,27 @@ const SearchBooks = () => {
   });
 
   // const [ saveBook, { error } ] = useMutation(SAVE_BOOK);
-  const [ saveBook ] = useMutation(SAVE_BOOK);
+  const [ saveBook ] = useMutation(SAVE_BOOK, {
+    update(cache, { data: { saveBook } }) {
+      // try {
+      //   const { savedBooks } = cache.readQuery({ query: GET_ME });
+
+      //   cache.writeQuery({
+      //     query: GET_ME,
+      //     data: { savedBooks: [saveBook, ...savedBooks]}
+      //   })
+
+      // } catch (e) {
+      //   console.error(e)
+      // }
+      const { me } = cache.readQuery({ query: GET_ME });
+      cache.writeQuery({
+        query: GET_ME,
+        data: { me: { ...me, savedBooks: [...me.savedBooks, saveBook]}}
+      })
+
+    }
+  });
 
   // create method to search for books and set state on form submit
   const handleFormSubmit = async (event) => {

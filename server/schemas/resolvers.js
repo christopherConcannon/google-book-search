@@ -50,52 +50,14 @@ const resolvers = {
       return { token, user }
     },
 
-
-    
-    // addThought: async (parent, args, context) => {
-    //   // only logged in users can add thought
-    //   if (context.user) {
-    //     const thought = await Thought.create({ ...args, username: context.user.username });
-
-    //     await User.findByIdAndUpdate(
-    //       { _id: context.user._id },
-    //       { $push: { thoughts: thought._id } },
-    //       { new: true }
-    //     );
-
-    //     return thought;
-    //   }
-
-    //   throw new AuthenticationError('You need to be logged in');
-    // },
-
-    // addReaction: async (parent, { thoughtId, reactionBody }, context) => {
-    //   if (context.user) {
-    //     // add reaction to Thought's reaction array
-    //     const updatedThought = await Thought.findOneAndUpdate(
-    //       { _id: thoughtId },
-    //       { $push: { reactions: { reactionBody, username: context.user.username } } },
-    //       { new: true, runValidators: true }
-    //     )
-
-    //     return updatedThought;
-    //   }
-
-    //   throw new AuthenticationError('You need to be logged in');
-    // }, 
-
     saveBook: async (parent, { book }, context) => {
-      // console.log("arguments: ", args.book);
- 
-
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           {_id: context.user._id},
-          // not sure how I will get the book obj to args
           { $addToSet: { savedBooks: book}},
           // do i really need to run validators here?
-          // { new: true, runValidators: true }
-          { new: true }
+          { new: true, runValidators: true }
+          // { new: true }
         )
         // console.log(updatedUser);
         return updatedUser;

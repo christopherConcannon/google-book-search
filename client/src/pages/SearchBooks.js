@@ -6,7 +6,6 @@ import { SAVE_BOOK } from '../utils/mutations';
 import { GET_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
-// import { saveBook, searchGoogleBooks } from '../utils/API';
 import { searchGoogleBooks } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 
@@ -25,20 +24,8 @@ const SearchBooks = () => {
     return () => saveBookIds(savedBookIds);
   });
 
-  // const [ saveBook, { error } ] = useMutation(SAVE_BOOK);
   const [ saveBook ] = useMutation(SAVE_BOOK, {
     update(cache, { data: { saveBook } }) {
-      // try {
-      //   const { savedBooks } = cache.readQuery({ query: GET_ME });
-
-      //   cache.writeQuery({
-      //     query: GET_ME,
-      //     data: { savedBooks: [saveBook, ...savedBooks]}
-      //   })
-
-      // } catch (e) {
-      //   console.error(e)
-      // }
       const { me } = cache.readQuery({ query: GET_ME });
       cache.writeQuery({
         query: GET_ME,
@@ -87,19 +74,7 @@ const SearchBooks = () => {
     
     console.log("book to save: ", bookToSave)
 
-    // get token from LS if it exists (ie user logged in)
-    // const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-    // if (!token) {
-    //   return false;
-    // }
-
     try {
-      // const response = await saveBook(bookToSave, token);
-
-      // if (!response.ok) {
-      //   throw new Error('something went wrong!');
-      // }
       await saveBook({
         variables: {book: bookToSave}  
       })

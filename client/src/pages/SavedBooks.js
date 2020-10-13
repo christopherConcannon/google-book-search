@@ -10,7 +10,7 @@ import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
 	const { loading, data: userData } = useQuery(GET_ME);
-	console.log('GET_ME data: ', userData);
+	// console.log('GET_ME data: ', userData);
 
   // works but needs browser refresh to update view
   const [ removeBook ] = useMutation(REMOVE_BOOK);
@@ -64,7 +64,9 @@ const SavedBooks = () => {
 										/>
 									) : null}
 									<Card.Body>
-										<Card.Title>{book.title}</Card.Title>
+                    <a href={book.link} target="_blank" rel="noopener noreferrer">
+                      <Card.Title>{book.title}</Card.Title>
+                    </a>
 										<p className="small">Authors: {book.authors}</p>
 										<Card.Text>{book.description}</Card.Text>
 										<Button

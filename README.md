@@ -2,19 +2,22 @@
 
 ![MIT license badge](https://img.shields.io/badge/license-MIT-green)
 
-![Google Books Search](./assets/images/screenshot.png)
-[Visit Site](https://sleepy-beach-66862.herokuapp.com/)
-
-
-
 ## Description
-
 A full-stack MERN application that allows users to search the Google Books database by book title.  A user can sign up to be able to save books to a collection which they can access on future visits to the site after a successful log in.
+
+##### Homescreen
+![Homescreen Screenshot](./assets/images/screenshot.png)
+##### Search Results View
+![Search Results View Screenshot](./assets/images/screenshot2.png)
+##### View
+![Saved Books View Screenshot](./assets/images/screenshot3.png)
+[Visit Site](https://sleepy-beach-66862.herokuapp.com/)
 
 ## Table of Contents
   * [Installation](#installation)
   * [Usage](#usage)
   * [License](#license)
+  * [Technologies](#technologies)
   * [Contributing](#contributing)
   * [Testing](#testing)
   * [Questions](#questions)
@@ -28,6 +31,8 @@ Enter the title of a book in the search bar to see information about the book, i
 ## License 
 This project is covered under the MIT license 
 
+## Technologies 
+MERN Stack, GraphQL, Apollo, JSON Web Tokens
 
 ## Contributing
 To see the guidelines adopted for contributing to this project, please view the [Contributor Covenant](https://www.contributor-covenant.org/version/2/0/code_of_conduct/code_of_conduct.txt)

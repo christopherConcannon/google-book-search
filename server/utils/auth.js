@@ -2,9 +2,8 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 // set token secret and expiration date
 // process.env variable not currently working.  console.logs correctly, but getting an error in graphql playground--SEE ERROR BELOW
-// const secret = process.env.JWT_SECRET;
-const secret = 'my$3cr3t$hhhhh';
-console.log(secret);
+const secret = process.env.JWT_SECRET;
+
 const expiration = '2h';
 
 module.exports = {
@@ -12,6 +11,7 @@ module.exports = {
   signToken: function ({ username, email, _id }) {
     const payload = { username, email, _id };
 
+    console.log('secret', secret);
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
 

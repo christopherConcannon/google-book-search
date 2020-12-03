@@ -11,7 +11,7 @@ A full-stack MERN application that allows users to search the Google Books datab
 ![Search Results View Screenshot](./assets/images/screenshot2.png)
 ##### View
 ![Saved Books View Screenshot](./assets/images/screenshot3.png)
-[Visit Site](https://sleepy-beach-66862.herokuapp.com/)
+[Visit Site](https://google-books-search-xo.herokuapp.com/)
 
 ## Table of Contents
   * [Installation](#installation)
